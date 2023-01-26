@@ -1,0 +1,15 @@
+
+{{/* Strip .Values prefix */}}
+{{- $_ := (merge . (default dict .Values)) -}}
+
+{{/* Render pure gotpl manifest */}}
+{{- $pth := default "manifests" .manifests_path }}
+{{- $suf := default ".t*mpl" .manifests_suffix }}
+{{- $manifests := default (printf "%s/**.y*ml%s" $pth $suf) .manifests }}
+
+{{- range $path, $_ :=  .Files.Glob  $manifests }}
+{{ tpl ($.Files.Get $path) $ }}
+{{- end }}
+
+
+

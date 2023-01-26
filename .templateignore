@@ -1,0 +1,7 @@
+# kluctl jinja2 ignored files
+
+# F5 gotpl manifests
+*.matrix
+**/*.tmpl
+**/*.tpl
+
